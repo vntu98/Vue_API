@@ -9,16 +9,16 @@
                 <app-navigation />
 
                 <div class="ass1-header__search">
-                    <form action="#">
+                    <form action="#" @submit.prevent="handleSubmitSearch">
                         <label>
-                            <input type="search" name="search-text" class="form-control" placeholder="Nhập từ khóa ...">
-                            <i class="icon-Search"></i>
+                            <input v-model="searchString" type="search" name="search-text" class="form-control" placeholder="Nhập từ khóa ...">
+                            <i class="icon-Search" @click="handleSubmitSearch"></i>
                         </label>
                     </form>
                 </div>
-                <a href="#" class="ass1-header__btn-upload ass1-btn">
+                <router-link to="/upload" class="ass1-header__btn-upload ass1-btn">
                     <i class="icon-Upvote"></i> Upload
-                </a>
+                </router-link>
                 <router-link v-if="!isLogin" class="ass1-header__btn-upload ass1-btn" to="/login">Login</router-link>
                 <div v-else class="wrapper-user">
                     <a class="user-header">
@@ -40,7 +40,12 @@ import $ from 'jquery'
 import AppNavigation from './AppNavigation'
 import { mapGetters, mapActions } from 'vuex'
 export default {
-    name: 'app-header',
+	name: 'app-header',
+	data() {
+		return {
+			searchString: ''
+		}
+	},
     mounted() {
         $(".ass1-header__menu li > a").click(function(e) {
             $(this).parent().find(".ass1-header__nav").slideToggle(300, 'swing');
@@ -63,6 +68,11 @@ export default {
 		goToUserPage() {
 			if(this.$route.name !== 'user-page')
 				this.$router.push({ name: 'user-page', params: { id: this.currentUser.USERID } })
+		},
+		handleSubmitSearch() {
+			if(this.searchString && this.$route.query.query !== this.searchString)
+				this.$router.push({ name: 'search', query: { query: this.searchString } });
+			this.searchString = '';
 		}
     },
     components: {

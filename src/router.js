@@ -8,6 +8,7 @@ import PostDetail from './pages/PostDetail'
 import PostUpload from './pages/PostUpload'
 import UserPage from './pages/UserPage'
 import UserProfile from './pages/UserProfile'
+import Search from './pages/Search'
 import authenticate from './plugins/authenticate'
 
 Vue.use(VueRouter)
@@ -43,7 +44,8 @@ const routes = [
     { 
         path: '/upload',
         name: 'upload', 
-        component: PostUpload 
+        component: PostUpload,
+        beforeEnter: authenticate.ifAuthenticate
     },
     { 
         path: '/user/:id',
@@ -55,6 +57,11 @@ const routes = [
         path: '/user/:id/profile',
         name: 'user-profile', 
         component: UserProfile 
+    },
+    { 
+        path: '/search',
+        name: 'search', 
+        component: Search 
     },
 ]
 
