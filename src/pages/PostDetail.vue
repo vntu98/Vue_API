@@ -16,7 +16,7 @@
 
                     <post-comment-add></post-comment-add>
 
-                    <post-comments></post-comments>
+                    <post-comments :comments="getDataPostDetail.comments"></post-comments>
                 </div>
             </div>
             <div class="col-lg-4">

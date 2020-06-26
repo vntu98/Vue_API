@@ -7,5 +7,8 @@ export default {
     },
     SET_POST_DETAIL: (state, data) => {
         state.postDetail = data;
+    },
+    SET_NEW_COMMENT: (state, data) => {
+        state.postDetail.comments.push(data);
     }
 }
