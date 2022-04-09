@@ -15,7 +15,7 @@
     "bootstrap": "4.0.0",
     "bootstrap-vue": "^2.15.0",
     "jquery": "^3.5.1",
-    "moment": "^2.27.0",
+    "moment": "^2.29.2",
     "vue": "^2.6.11",
     "vue-masonry": "^0.11.8",
     "vue-router": "^3.3.4",
